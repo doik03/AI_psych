@@ -1,0 +1,59 @@
+#number 1
+
+def Function(num1, num2, operator):
+    if operator == '+':
+        print(num1 + num2)
+    elif operator == '-':
+        print(num1 - num2)
+    elif operator == '*':
+        print(num1 * num2)
+    elif operator == '/':
+        print(num1 / num2)
+    else:
+        print(num1 % num2)
+        
+#number 2
+import numpy as np                 #importing all the necessary libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+
+arr = np.random.randint(0, 10, size =(10, 10))      #create a list of random numbers
+freq = []                                           #frequency list for making a DataFrame
+freq_hist = []                                      #frequency list for making a histogram
+
+rows = len(arr)                                     #getting the number of rows and columns of the random list of numbers
+cols = len(arr[0])                                  
+
+for h in range(10):                                 #loop 100 times
+  count = 0                                         #if a number equals 0 ~ 9 depending on which #h you are in, increment count by 1
+  for i in range(rows):                             
+    for j in range(cols):
+      if(arr[i][j] == h):                           
+        count += 1
+        freq_hist.append(arr[i][j])                 #add the number to frequency list for making a histogram
+  freq.append(count)                                #add the number to frequency list for making a DataFrame
+
+frame = pd.DataFrame(freq)                          #creating a dataframe with frequency list
+frame_hist = pd.DataFrame(freq_hist)
+
+plt.hist(frame_hist, bins = 9)
+plt.xlabel('Number')
+plt.xticks(range(0, 10))
+plt.ylabel('Frequency')
+plt.title('Frequency of Each Number')
+
+plt.show()
+
+
+#number 3
+
+from numpy import random
+
+rand_arr = random.randint(100, size = 1000)
+
+for i in range(len(rand_arr) - 1):
+  for j in range(len(rand_arr) - 1):               
+    if(rand_arr[j] > rand_arr[j+1]):               #if the previous number is greater than subsequent number
+      temp = rand_arr[j + 1]                       #switch
+      rand_arr[j + 1] = rand_arr[j]
+      rand_arr[j] = temp
