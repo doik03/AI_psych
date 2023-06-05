@@ -311,3 +311,208 @@ plt.plot(Result_array2/n_trials, color='green')
 
 
 #3
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+n_arms = 10
+n_steps = 1000
+n_trials = 2000
+
+c = 1                             # Exploration value of 1
+
+Result_array = np.zeros(n_steps)  # Result array for plotting
+Result_array2 = np.zeros(n_steps) # Result array for plotting optimal action selection
+P_arm = np.random.randn(n_arms)   # Average probability of reward amount
+
+for i in range(n_trials):
+    Q_arm = np.zeros(n_arms)     # Value of each arm
+    N_visits = np.zeros(n_arms)  # Number of visits to each arm
+
+    for j in range(n_steps):
+        R_arm = np.random.normal(P_arm, 1, n_arms)  # Generate actual reward average Probability +/- 1
+
+        # UCB action selection
+        if np.any(N_visits == 0):   # Explore unvisited arms first
+            action = np.random.choice(np.flatnonzero(N_visits == 0))
+        else:
+            ucb_values = Q_arm + c * np.sqrt(np.log(j + 1) / N_visits)
+            action = np.argmax(ucb_values)
+
+        N_visits[action] += 1                      # Update value function Q
+        Q_arm[action] += (R_arm[action] - Q_arm[action]) / N_visits[action]
+
+        Result_array[j] += R_arm[action]           # Track cumulative rewards and optimal action selections
+        if np.argmax(R_arm) == action:
+            Result_array2[j] += 1
+
+plt.plot(Result_array2 / n_trials, color='red')
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+
+c = 1.5                           # Exploration value of 1.5
+
+Result_array = np.zeros(n_steps)  # Result array for plotting
+Result_array2 = np.zeros(n_steps) # Result array for plotting optimal action selection
+P_arm = np.random.randn(n_arms)   # Average probability of reward amount
+
+for i in range(n_trials):
+    Q_arm = np.zeros(n_arms)     # Value of each arm
+    N_visits = np.zeros(n_arms)  # Number of visits to each arm
+
+    for j in range(n_steps):
+        R_arm = np.random.normal(P_arm, 1, n_arms)  # Generate actual reward average Probability +/- 1
+
+        # UCB action selection
+        if np.any(N_visits == 0):   # Explore unvisited arms first
+            action = np.random.choice(np.flatnonzero(N_visits == 0))
+        else:
+            ucb_values = Q_arm + c * np.sqrt(np.log(j + 1) / N_visits)
+            action = np.argmax(ucb_values)
+
+        N_visits[action] += 1                      # Update value function Q
+        Q_arm[action] += (R_arm[action] - Q_arm[action]) / N_visits[action]
+
+        Result_array[j] += R_arm[action]           # Track cumulative rewards and optimal action selections
+        if np.argmax(R_arm) == action:
+            Result_array2[j] += 1
+
+plt.plot(Result_array2 / n_trials, color='orange')
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+c = 2                             # Exploration value of 2
+
+Result_array = np.zeros(n_steps)  # Result array for plotting
+Result_array2 = np.zeros(n_steps) # Result array for plotting optimal action selection
+P_arm = np.random.randn(n_arms)   # Average probability of reward amount
+
+for i in range(n_trials):
+    Q_arm = np.zeros(n_arms)     # Value of each arm
+    N_visits = np.zeros(n_arms)  # Number of visits to each arm
+
+    for j in range(n_steps):
+        R_arm = np.random.normal(P_arm, 1, n_arms)  # Generate actual reward average Probability +/- 1
+
+        # UCB action selection
+        if np.any(N_visits == 0):   # Explore unvisited arms first
+            action = np.random.choice(np.flatnonzero(N_visits == 0))
+        else:
+            ucb_values = Q_arm + c * np.sqrt(np.log(j + 1) / N_visits)
+            action = np.argmax(ucb_values)
+
+        N_visits[action] += 1                      # Update value function Q
+        Q_arm[action] += (R_arm[action] - Q_arm[action]) / N_visits[action]
+
+        Result_array[j] += R_arm[action]           # Track cumulative rewards and optimal action selections
+        if np.argmax(R_arm) == action:
+            Result_array2[j] += 1
+
+plt.plot(Result_array2 / n_trials, color='yellow')
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+
+c = 4                             # Exploration value of 4
+
+Result_array = np.zeros(n_steps)  # Result array for plotting
+Result_array2 = np.zeros(n_steps) # Result array for plotting optimal action selection
+P_arm = np.random.randn(n_arms)   # Average probability of reward amount
+
+for i in range(n_trials):
+    Q_arm = np.zeros(n_arms)     # Value of each arm
+    N_visits = np.zeros(n_arms)  # Number of visits to each arm
+
+    for j in range(n_steps):
+        R_arm = np.random.normal(P_arm, 1, n_arms)  # Generate actual reward average Probability +/- 1
+
+        # UCB action selection
+        if np.any(N_visits == 0):   # Explore unvisited arms first
+            action = np.random.choice(np.flatnonzero(N_visits == 0))
+        else:
+            ucb_values = Q_arm + c * np.sqrt(np.log(j + 1) / N_visits)
+            action = np.argmax(ucb_values)
+
+        N_visits[action] += 1                      # Update value function Q
+        Q_arm[action] += (R_arm[action] - Q_arm[action]) / N_visits[action]
+        
+        Result_array[j] += R_arm[action]           # Track cumulative rewards and optimal action selections
+        if np.argmax(R_arm) == action:
+            Result_array2[j] += 1
+
+plt.plot(Result_array2 / n_trials, color='green')
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+epsilon = 0.1                      #epsilon value of 0.1
+
+Result_array = np.zeros(n_steps)   # Result array for plotting
+Result_array2 = np.zeros(n_steps)  # Result array for plotting optimal action selection
+P_arm = np.random.randn(n_arms)    # Average probability of reward amount
+
+for i in range(n_trials):
+    Q_arm = np.zeros(n_arms)       # Value of each arm
+    N_visits = np.zeros(n_arms)    # Number of visits to each arm
+    
+    for j in range(n_steps):
+        R_arm = np.random.normal(P_arm, 1, n_arms) # Generate actual reward average Probability +/- 1
+        
+        if np.random.rand(1) < epsilon:            # Epsilon greedy policy
+            action = np.random.choice(np.flatnonzero(Q_arm == Q_arm.max()))       #modified code for choosing random action when several actions have the same Q-values
+                                                                                  #find out actions that have the same Q-value as max Q-value --> use a random action
+        else:
+            action = np.argmax(Q_arm)
+        
+        if N_visits[action] == 0:           # updating the value function Q
+            Q_arm[action] += R_arm[action]  # If no visit then Q = Reward
+        else:
+            Q_arm[action] += (R_arm[action] - Q_arm[action]) / N_visits[action]  # Q value is R - Q/N
+            
+        N_visits[action] += 1
+        Result_array[j] += R_arm[action]
+        
+        if np.argmax(R_arm) == action:
+            Result_array2[j] += 1
+
+plt.plot(Result_array2/n_trials, color='blue')
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+epsilon = 0.01                     #epsilon value of 0.01
+
+Result_array = np.zeros(n_steps)   # Result array for plotting
+Result_array2 = np.zeros(n_steps)  # Result array for plotting optimal action selection
+P_arm = np.random.randn(n_arms)    # Average probability of reward amount
+
+for i in range(n_trials):
+    Q_arm = np.zeros(n_arms)       # Value of each arm
+    N_visits = np.zeros(n_arms)    # Number of visits to each arm
+    
+    for j in range(n_steps):
+        R_arm = np.random.normal(P_arm, 1, n_arms)  # Generate actual reward average Probability +/- 1
+        
+        if np.random.rand(1) < epsilon:             # Epsilon greedy policy
+            action = np.random.choice(np.flatnonzero(Q_arm == Q_arm.max()))      
+        else:
+            action = np.argmax(Q_arm)
+        
+        if N_visits[action] == 0:           # updating the value function Q
+            Q_arm[action] += R_arm[action]  # If no visit then Q = Reward
+        else:
+            Q_arm[action] += (R_arm[action] - Q_arm[action]) / N_visits[action]  # Q value is R - Q/N
+            
+        N_visits[action] += 1
+        Result_array[j] += R_arm[action]
+        
+        if np.argmax(R_arm) == action:
+            Result_array2[j] += 1
+
+plt.plot(Result_array2/n_trials, color='purple')
+plt.show()
+
+#Result
+#The UCB action selection algorithm with an exploration value of 2 showed the greatest accuracy. UCB action selection algorithms with exploration values of 1.5 and 4 also showed greater accuracies than the 
+#epsilon greedy method over time. The UCB action selection algorithm with an exploration value of 1, however, did not perform better than epsilon greedy method with an epsilon value of 0.01. The epsilon 
+#method with an epsilon value of 0.1 performed the worst, after UCB action selection (with an exploration value of 1). All in all, epsilon greedy methods showed lower accuracies than three of the four UCB
+#action selection algorithms, proving the superiority of UCB action selection algorithms. 
