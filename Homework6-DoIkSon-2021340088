@@ -143,7 +143,7 @@ plt.plot(Result_array2/n_trials, color='green')
 plt.show()
 
 #Results
-#The optimal epsilon value seems to be 0.01 and 0.1. Both values show very similar learning rates. Epsilon value of 0.5 isn't as effective, suggesting that too much exploration 
+#The optimal epsilon value seems to be 0.01. The next best epsilon value is 0.1. Epsilon value of 0.5 isn't as effective, suggesting that too much exploration 
 #isn't necessarily beneficial. The greedy policy with an epsilon value of 0 showed the worst accuracy, suggesting that exploration is needed for effective machine learning. 
 
 
@@ -514,5 +514,6 @@ plt.show()
 #Result
 #The UCB action selection algorithm with an exploration value of 2 showed the greatest accuracy. UCB action selection algorithms with exploration values of 1.5 and 4 also showed greater accuracies than the 
 #epsilon greedy method over time. The UCB action selection algorithm with an exploration value of 1, however, did not perform better than epsilon greedy method with an epsilon value of 0.01. The epsilon 
-#method with an epsilon value of 0.1 performed the worst, after UCB action selection (with an exploration value of 1). All in all, epsilon greedy methods showed lower accuracies than three of the four UCB
-#action selection algorithms, proving the superiority of UCB action selection algorithms. 
+#method with an epsilon value of 0.1 performed the worst, after UCB action selection (with an exploration value of 1). Among the two epsilon greedy methods, the one with an epsilon value of 0.01 performed
+#better, consistent with the findings in Question #1.All in all, epsilon greedy methods showed lower accuracies than three of the four UCBaction selection algorithms, proving the superiority of UCB action
+#selection algorithms. 
