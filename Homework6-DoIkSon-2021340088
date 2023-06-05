@@ -142,13 +142,11 @@ for i in range(n_trials):
 plt.plot(Result_array2/n_trials, color='green')
 plt.show()
 
-#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
-
-
-
 #Results
 #The optimal epsilon value seems to be 0.01 and 0.1. Both values show very similar learning rates. Epsilon value of 0.5 isn't as effective, suggesting that too much exploration 
 #isn't necessarily beneficial. The greedy policy with an epsilon value of 0 showed the worst accuracy, suggesting that exploration is needed for effective machine learning. 
+
+
 
 
 
@@ -306,6 +304,8 @@ plt.plot(Result_array2/n_trials, color='green')
 #It seems like the more optimistic the initial value gets, the worse the accuracy. The algorithm showed best accuracy when the initial values of the arms were 0, and vice versa. I speculate
 #this is the case because overall higher the initial values can lead to hindrance of exploration because the higher initial values might lead to potentially decreased amount of learning 
 #in general. 
+
+
 
 
 
