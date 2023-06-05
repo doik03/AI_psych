@@ -515,5 +515,5 @@ plt.show()
 #The UCB action selection algorithm with an exploration value of 2 showed the greatest accuracy. UCB action selection algorithms with exploration values of 1.5 and 4 also showed greater accuracies than the 
 #epsilon greedy method over time. The UCB action selection algorithm with an exploration value of 1, however, did not perform better than epsilon greedy method with an epsilon value of 0.01. The epsilon 
 #method with an epsilon value of 0.1 performed the worst, after UCB action selection (with an exploration value of 1). Among the two epsilon greedy methods, the one with an epsilon value of 0.01 performed
-#better, consistent with the findings in Question #1.All in all, epsilon greedy methods showed lower accuracies than three of the four UCBaction selection algorithms, proving the superiority of UCB action
+#better, consistent with the findings in Question #1.All in all, epsilon greedy methods showed lower accuracies than three of the four UCB action selection algorithms, proving the superiority of UCB action
 #selection algorithms. 
