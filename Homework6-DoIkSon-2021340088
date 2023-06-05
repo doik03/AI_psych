@@ -1,0 +1,313 @@
+#1
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+n_arms = 10
+n_steps = 1000
+n_trials = 2000
+
+epsilon = 0                        #epsilon value of 0 (greedy)
+
+Result_array = np.zeros(n_steps)   # Result array for plotting
+Result_array2 = np.zeros(n_steps)  # Result array for plotting optimal action selection
+P_arm = np.random.randn(n_arms)    # Average probability of reward amount
+
+for i in range(n_trials):
+    Q_arm = np.zeros(n_arms)       # Value of each arm
+    N_visits = np.zeros(n_arms)    # Number of visits to each arm
+    
+    for j in range(n_steps):
+        R_arm = np.random.normal(P_arm, 1, n_arms)  # Generate actual reward average Probability +/- 1
+        
+        if np.random.rand(1) < epsilon:             # Epsilon greedy policy
+            action = np.random.choice(np.flatnonzero(Q_arm == Q_arm.max()))       #modified code for choosing random action when several actions have the same Q-values
+                                                                                  #find out actions that have the same Q-value as max Q-value --> use a random action
+        else:
+            action = np.argmax(Q_arm)
+        
+        if N_visits[action] == 0:           # updating the value function Q
+            Q_arm[action] += R_arm[action]  # If no visit then Q = Reward
+        else:
+            Q_arm[action] += (R_arm[action] - Q_arm[action]) / N_visits[action]   # Q value is R - Q/N
+            
+        N_visits[action] += 1
+        Result_array[j] += R_arm[action]
+        
+        if np.argmax(R_arm) == action:
+            Result_array2[j] += 1
+
+plt.plot(Result_array2/n_trials, color='red')
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+epsilon = 0.01                     #epsilon value of 0.01
+
+Result_array = np.zeros(n_steps)   # Result array for plotting
+Result_array2 = np.zeros(n_steps)  # Result array for plotting optimal action selection
+P_arm = np.random.randn(n_arms)    # Average probability of reward amount
+
+for i in range(n_trials):
+    Q_arm = np.zeros(n_arms)       # Value of each arm
+    N_visits = np.zeros(n_arms)    # Number of visits to each arm
+    
+    for j in range(n_steps):
+        R_arm = np.random.normal(P_arm, 1, n_arms)  # Generate actual reward average Probability +/- 1
+        
+        if np.random.rand(1) < epsilon:             # Epsilon greedy policy
+            action = np.random.choice(np.flatnonzero(Q_arm == Q_arm.max()))       #modified code for choosing random action when several actions have the same Q-values
+                                                                                  #find out actions that have the same Q-value as max Q-value --> use a random action
+        else:
+            action = np.argmax(Q_arm)
+        
+        if N_visits[action] == 0:           # updating the value function Q
+            Q_arm[action] += R_arm[action]  # If no visit then Q = Reward
+        else:
+            Q_arm[action] += (R_arm[action] - Q_arm[action]) / N_visits[action]  # Q value is R - Q/N
+            
+        N_visits[action] += 1
+        Result_array[j] += R_arm[action]
+        
+        if np.argmax(R_arm) == action:
+            Result_array2[j] += 1
+
+plt.plot(Result_array2/n_trials, color='orange')
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+epsilon = 0.1                      #epsilon value of 0.1
+
+Result_array = np.zeros(n_steps)   # Result array for plotting
+Result_array2 = np.zeros(n_steps)  # Result array for plotting optimal action selection
+P_arm = np.random.randn(n_arms)    # Average probability of reward amount
+
+for i in range(n_trials):
+    Q_arm = np.zeros(n_arms)       # Value of each arm
+    N_visits = np.zeros(n_arms)    # Number of visits to each arm
+    
+    for j in range(n_steps):
+        R_arm = np.random.normal(P_arm, 1, n_arms)  # Generate actual reward average Probability +/- 1
+        
+        if np.random.rand(1) < epsilon:             # Epsilon greedy policy
+            action = np.random.choice(np.flatnonzero(Q_arm == Q_arm.max()))       #modified code for choosing random action when several actions have the same Q-values
+                                                                                  #find out actions that have the same Q-value as max Q-value --> use a random action
+        else:
+            action = np.argmax(Q_arm)
+        
+        if N_visits[action] == 0:           # updating the value function Q
+            Q_arm[action] += R_arm[action]  # If no visit then Q = Reward
+        else:
+            Q_arm[action] += (R_arm[action] - Q_arm[action]) / N_visits[action]  # Q value is R - Q/N
+            
+        N_visits[action] += 1
+        Result_array[j] += R_arm[action]
+        
+        if np.argmax(R_arm) == action:
+            Result_array2[j] += 1
+
+plt.plot(Result_array2/n_trials, color='yellow')
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+epsilon = 0.5                      #epsilon value of 0.5
+
+Result_array = np.zeros(n_steps)   # Result array for plotting
+Result_array2 = np.zeros(n_steps)  # Result array for plotting optimal action selection
+P_arm = np.random.randn(n_arms)    # Average probability of reward amount
+
+for i in range(n_trials):
+    Q_arm = np.zeros(n_arms)       # Value of each arm
+    N_visits = np.zeros(n_arms)    # Number of visits to each arm
+    
+    for j in range(n_steps):
+        R_arm = np.random.normal(P_arm, 1, n_arms)  # Generate actual reward average Probability +/- 1
+        
+        if np.random.rand(1) < epsilon:             # Epsilon greedy policy
+            action = np.random.choice(np.flatnonzero(Q_arm == Q_arm.max()))       #modified code for choosing random action when several actions have the same Q-values
+                                                                                  #find out actions that have the same Q-value as max Q-value --> use a random action
+        else:
+            action = np.argmax(Q_arm)
+        
+        if N_visits[action] == 0:           # updating the value function Q
+            Q_arm[action] += R_arm[action]  # If no visit then Q = Reward
+        else:
+            Q_arm[action] += (R_arm[action] - Q_arm[action]) / N_visits[action]  # Q value is R - Q/N
+            
+        N_visits[action] += 1
+        Result_array[j] += R_arm[action]
+        
+        if np.argmax(R_arm) == action:
+            Result_array2[j] += 1
+
+plt.plot(Result_array2/n_trials, color='green')
+plt.show()
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+
+
+#Results
+#The optimal epsilon value seems to be 0.01 and 0.1. Both values show very similar learning rates. Epsilon value of 0.5 isn't as effective, suggesting that too much exploration 
+#isn't necessarily beneficial. The greedy policy with an epsilon value of 0 showed the worst accuracy, suggesting that exploration is needed for effective machine learning. 
+
+
+
+
+
+#2
+
+import numpy as np
+import matplotlib.pyplot as plt
+    
+n_arms=12
+n_steps= 1000
+n_trials=2000
+
+epsilon=0
+
+Result_array=np.zeros(n_steps)   # Result array for plotting
+Result_array2=np.zeros(n_steps)  # Result array for plotting optimal action selection
+P_arm=np.random.randn(n_arms)    # Average probability of reward amount
+ 
+for i in range(n_trials):
+   
+    Q_arm=np.zeros(n_arms)       # Initial value of 0
+    N_visits=np.zeros(n_arms)    # Number of visits to each arm
+    
+    for j in range(n_steps):
+        R_arm=np.random.normal(P_arm,1,n_arms) # Generate actual reward average Probability +/- 1 
+       
+        if np.random.rand(1) < epsilon:        # Epsilon greedy policy
+            action = np.random.choice(np.flatnonzero(Q_arm == Q_arm.max()))
+        else:
+            action=np.argmax(Q_arm) 
+        
+             
+        if N_visits[action]==0:               # updating the value function Q
+            Q_arm[action]+=R_arm[action]      #If no visit then Q = Reward 
+        else:
+            Q_arm[action]+=(R_arm[action]-Q_arm[action])/N_visits[action]   # Q value is R-Q/N --> See the textbook for Q update
+            
+        N_visits[action]+=1        
+        Result_array[j]+=R_arm[action]
+        
+        if np.argmax(R_arm)==action:
+            Result_array2[j]+=1
+    
+plt.plot(Result_array2/n_trials, color='red')
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+epsilon=0
+
+Result_array=np.zeros(n_steps)   # Result array for plotting
+Result_array2=np.zeros(n_steps)  # Result array for plotting optimal action selection
+P_arm=np.random.randn(n_arms)    # Average probability of reward amount
+ 
+for i in range(n_trials):
+   
+    Q_arm=np.full(n_arms, 5)     # Initial value of 5
+    N_visits=np.zeros(n_arms)    # Number of visits to each arm
+    
+    for j in range(n_steps):
+        R_arm=np.random.normal(P_arm,1,n_arms) # Generate actual reward average Probability +/- 1 
+       
+        if np.random.rand(1) < epsilon:        # Epsilon greedy policy
+            action = np.random.choice(np.flatnonzero(Q_arm == Q_arm.max()))
+        else:
+            action=np.argmax(Q_arm) 
+        
+             
+        if N_visits[action]==0:               # updating the value function Q
+            Q_arm[action]+=R_arm[action]      #If no visit then Q = Reward 
+        else:
+            Q_arm[action]+=(R_arm[action]-Q_arm[action])/N_visits[action]   # Q value is R-Q/N --> See the textbook for Q update
+            
+        N_visits[action]+=1        
+        Result_array[j]+=R_arm[action]
+        
+        if np.argmax(R_arm)==action:
+            Result_array2[j]+=1
+    
+plt.plot(Result_array2/n_trials, color='orange')
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+epsilon=0
+
+Result_array=np.zeros(n_steps)   # Result array for plotting
+Result_array2=np.zeros(n_steps)  # Result array for plotting optimal action selection
+P_arm=np.random.randn(n_arms)    # Average probability of reward amount
+ 
+for i in range(n_trials):
+   
+    Q_arm=np.full(n_arms, 10)    # Initial value of 10
+    N_visits=np.zeros(n_arms)    # Number of visits to each arm
+    
+    for j in range(n_steps):
+        R_arm=np.random.normal(P_arm,1,n_arms) # Generate actual reward average Probability +/- 1 
+       
+        if np.random.rand(1) < epsilon:        # Epsilon greedy policy
+            action = np.random.choice(np.flatnonzero(Q_arm == Q_arm.max()))
+        else:
+            action=np.argmax(Q_arm) 
+        
+             
+        if N_visits[action]==0:               # updating the value function Q
+            Q_arm[action]+=R_arm[action]      #If no visit then Q = Reward 
+        else:
+            Q_arm[action]+=(R_arm[action]-Q_arm[action])/N_visits[action]   # Q value is R-Q/N --> See the textbook for Q update
+            
+        N_visits[action]+=1        
+        Result_array[j]+=R_arm[action]
+        
+        if np.argmax(R_arm)==action:
+            Result_array2[j]+=1
+    
+plt.plot(Result_array2/n_trials, color='yellow')
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+epsilon=0
+
+Result_array=np.zeros(n_steps)   # Result array for plotting
+Result_array2=np.zeros(n_steps)  # Result array for plotting optimal action selection
+P_arm=np.random.randn(n_arms)    # Average probability of reward amount
+ 
+for i in range(n_trials):
+   
+    Q_arm=np.full(n_arms, 15)    # Initial value of 15
+    N_visits=np.zeros(n_arms)    # Number of visits to each arm
+    
+    for j in range(n_steps):
+        R_arm=np.random.normal(P_arm,1,n_arms) # Generate actual reward average Probability +/- 1 
+       
+        if np.random.rand(1) < epsilon:        # Epsilon greedy policy
+            action = np.random.choice(np.flatnonzero(Q_arm == Q_arm.max()))
+        else:
+            action=np.argmax(Q_arm) 
+        
+             
+        if N_visits[action]==0:               # updating the value function Q
+            Q_arm[action]+=R_arm[action]      #If no visit then Q = Reward 
+        else:
+            Q_arm[action]+=(R_arm[action]-Q_arm[action])/N_visits[action]   # Q value is R-Q/N --> See the textbook for Q update
+            
+        N_visits[action]+=1        
+        Result_array[j]+=R_arm[action]
+        
+        if np.argmax(R_arm)==action:
+            Result_array2[j]+=1
+    
+#plt.plot(Result_array/n_trials, color='green')
+plt.plot(Result_array2/n_trials, color='green')
+
+#Result
+#It seems like the more optimistic the initial value gets, the worse the accuracy. The algorithm showed best accuracy when the initial values of the arms were 0, and vice versa. I speculate
+#this is the case because overall higher the initial values can lead to hindrance of exploration because the higher initial values might lead to potentially decreased amount of learning 
+#in general. 
+
+
+
+
+#3
